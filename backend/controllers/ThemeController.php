@@ -25,7 +25,7 @@ class ThemeController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'open' => ['post'],
+                    'open' => ['post','get'],
                 ],
             ],
         ];

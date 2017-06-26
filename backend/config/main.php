@@ -11,7 +11,7 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'components' => [
         'request' => [
-            'csrfParam' => '_csrfBackend'
+            'csrfParam' => '_csrfBackendf'
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

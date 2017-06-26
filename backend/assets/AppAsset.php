@@ -34,7 +34,8 @@ class AppAsset extends AssetBundle
      * @var string|bool Choose skin color, eg. `'skin-blue'` or set `false` to disable skin loading
      * @see https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html#layout
      */
-    public $skin = '_all-skins';
+    //public $skin = '_all-skins';
+    public $skin = 'skin-blue';
 
     /**
      * @inheritdoc
@@ -47,7 +48,8 @@ class AppAsset extends AssetBundle
                 throw new Exception('Invalid skin specified');
             }
 
-            $this->css[] = sprintf('css/skins/%s.min.css', $this->skin);
+            //$this->css[] = sprintf('css/skins/%s.min.css', $this->skin);
+            $this->css[] = sprintf('css/skins/%s.css', $this->skin);
         }
 
         parent::init();

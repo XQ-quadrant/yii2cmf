@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
                             [
                                 'class' => 'backend\widgets\grid\SwitcherColumn',
                                 'attribute' => 'status',
-                                'route' => '/carousel-item/switcher'
+                                'route' => '/admin/index.php?r=carousel-item%2Fswitcher'
                             ],
 
                             [

@@ -2,20 +2,24 @@
 
 use yii\helpers\Url;
 
-/* @var $this yii\web\View */
+/* @var $this yii\web\View
+* @var $categories array
+
+ */
 
 ?>
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-8">
         <?= \frontend\widgets\slider\CarouselWidget::widget([
-            'key' => 'index',
+            'key' => 'cc',
             'options' => [
                 'class' => 'mb15',
             ],
         ]) ?>
+
         <div class="row">
             <?php
-            if ($this->beginCache('category-article-list', ['duration' => 3600])):
+            if ($this->beginCache('category-article-list', ['duration' => 1])):
                 ?>
                 <?php foreach ($categories as $category): ?>
                 <div class="col-md-6">
@@ -24,7 +28,7 @@ use yii\helpers\Url;
                             <h3 class="panel-title"><?= $category->title ?></h3>
                             <div class="pull-right"><a
                                     href="<?= Url::to(['/article/index', 'cate' => $category->slug]) ?>"
-                                    target="_blank">更多 >></a></div>
+                                    target="_blank">更s多 >></a></div>
                         </div>
                         <div class="panel-body">
                             <ul class="category-article-list">
@@ -42,9 +46,32 @@ use yii\helpers\Url;
                 </div>
             <?php endforeach; ?>
                 <?php $this->endCache();endif; ?>
+            <?php $category2 = \common\models\Category::findOne(['slug'=>'notice']); ?>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><?= $category2->title ?></h3>
+                        <div class="pull-right"><a
+                                href="<?= Url::to(['/article/index', 'cate' => $category2->slug]) ?>"
+                                target="_blank">更多 >></a></div>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="category-article-list">
+                            <?php
+                            $list = \frontend\models\Article::find()->andWhere(['category_id' => $category2->id])->orderBy('id desc')->limit(5)->all();
+                            foreach ($list as $item) :
+                                ?>
+                                <li><em><?= Yii::$app->formatter->asDate($item->published_at, 'php:m-d') ?></em> <a
+                                        href="<?= Url::to(['/article/view', 'id' => $item->id]) ?>"
+                                        title="<?= $item->title ?>" target="_blank"><?= $item->title ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="btn-group btn-group-justified">
             <?php if (Yii::$app->user->isGuest || (!Yii::$app->user->isGuest && !Yii::$app->user->identity->isSign)): ?>
                 <a class="btn btn-success btn-registration" href="<?= Url::to(['/sign/index']) ?>"><i
