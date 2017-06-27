@@ -10,6 +10,7 @@ class AppAsset extends AssetBundle
    // public $sourcePath = '@webroot/xxa';
     public $css = [
         '/xxa/css/site.css',
+        '/xxa/css/self.css',
     ];
     public $js = [
         '/xxa/js/site.js',

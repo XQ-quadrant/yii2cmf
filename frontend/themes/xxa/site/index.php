@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Url;
-
+use common\models\Category;
 /* @var $this yii\web\View
 * @var $categories array
 
@@ -18,17 +18,35 @@ use yii\helpers\Url;
         ]) ?>
 
         <div class="row">
+            <div class="line_2" style="margin:34px 0px 28px;"></div>
+            <?= common\widgets\box\BoxWidget::widget([
+                'category'=>Category::findOne(['slug'=>'news']),
+                //'config' => ['cate'=>14],
+                //'where' => ['category_id' => $category2->id],
+                'type' => 'block_home_post',
+                //'cate' => 14,
+                'sort' => [
+                    'created_at' => SORT_DESC,
+                    //'name' => SORT_DESC,
+                ],
+                'liNum' => 6,
+                //'pic' => true,
+                //'title' => ,
+                'url' => Url::toRoute(['document/list', 'cate' => 14]),
+                'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
+            ]) ?>
+
             <?php
             if ($this->beginCache('category-article-list', ['duration' => 1])):
                 ?>
                 <?php foreach ($categories as $category): ?>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title"><?= $category->title ?></h3>
                             <div class="pull-right"><a
                                     href="<?= Url::to(['/article/index', 'cate' => $category->slug]) ?>"
-                                    target="_blank">更s多 >></a></div>
+                                    target="_blank">更多 >></a></div>
                         </div>
                         <div class="panel-body">
                             <ul class="category-article-list">
@@ -46,8 +64,11 @@ use yii\helpers\Url;
                 </div>
             <?php endforeach; ?>
                 <?php $this->endCache();endif; ?>
-            <?php $category2 = \common\models\Category::findOne(['slug'=>'notice']); ?>
+
+            <?php $category2 = Category::findOne(['slug'=>'notice']); ?>
             <div class="col-md-6">
+
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title"><?= $category2->title ?></h3>
@@ -58,7 +79,9 @@ use yii\helpers\Url;
                     <div class="panel-body">
                         <ul class="category-article-list">
                             <?php
-                            $list = \frontend\models\Article::find()->andWhere(['category_id' => $category2->id])->orderBy('id desc')->limit(5)->all();
+                            $list = \frontend\models\Article::find()
+                                ->andWhere(['category_id' => $category2->id])->orderBy('id desc')
+                                ->limit(5)->all();
                             foreach ($list as $item) :
                                 ?>
                                 <li><em><?= Yii::$app->formatter->asDate($item->published_at, 'php:m-d') ?></em> <a
@@ -91,6 +114,60 @@ use yii\helpers\Url;
             "headerClass" => "panel-heading",
             "bodyClass" => "panel-body",
         ]) ?>
+        <?= common\widgets\box\BoxWidget::widget([
+            'category'=>Category::findOne(['slug'=>'notice']),
+            //'config' => ['cate'=>14],
+            'where' => ['category_id' => $category2->id],
+            'type' => 'block_tabs_type_4',
+            //'cate' => 14,
+            'sort' => [
+                'created_at' => SORT_DESC,
+                //'name' => SORT_DESC,
+            ],
+            'liNum' => 4,
+            //'pic' => true,
+            //'title' => ,
+            'url' => Url::toRoute(['document/list', 'cate' => 14]),
+            'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
+        ]) ?>
+
+        <?= common\widgets\box\BoxWidget::widget([
+            'category'=>Category::findOne(['slug'=>'news']),
+            //'config' => ['cate'=>14],
+            //'where' => ['category_id' => $category2->id],
+            'type' => 'block_lectures',
+            //'cate' => 14,
+            'sort' => [
+                'created_at' => SORT_DESC,
+                //'name' => SORT_DESC,
+            ],
+            'liNum' => 6,
+            //'pic' => true,
+            //'title' => ,
+            'url' => Url::toRoute(['document/list', 'cate' => 14]),
+            'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
+        ]) ?>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?= $category2->title ?></h3>
+                <div class="pull-right"><a
+                        href="<?= Url::to(['/article/index', 'cate' => $category2->slug]) ?>"
+                        target="_blank">更多 >></a></div>
+            </div>
+            <div class="panel-body">
+                <ul class="category-article-list">
+                    <?php
+                    $list = \frontend\models\Article::find()->andWhere(['category_id' => $category2->id])->orderBy('id desc')->limit(5)->all();
+                    foreach ($list as $item) :
+                        ?>
+                        <li><em><?= Yii::$app->formatter->asDate($item->published_at, 'php:m-d') ?></em> <a
+                                href="<?= Url::to(['/article/view', 'id' => $item->id]) ?>"
+                                title="<?= $item->title ?>" target="_blank"><?= $item->title ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h5>热门教程</h5>

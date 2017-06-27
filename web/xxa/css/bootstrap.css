@@ -1450,7 +1450,7 @@ a:focus
 {
     text-decoration: underline;
 
-    color: #fa7a20;
+    /*color: #fa7a20;*/
 }
 a:focus
 {

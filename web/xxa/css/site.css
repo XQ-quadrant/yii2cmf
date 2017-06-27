@@ -38,7 +38,7 @@ html, body { height: 100%; font-family: "Helvetica Neue", Helvetica, Arial, "Hir
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 { padding-left: 10px; padding-right: 10px; }
 .row { margin-left: -10px; margin-right: -10px; }
 /*blockquote {border-left:5px solid #f16705; font-weight: bold;}*/
-ul { padding-left: 20px; }
+ul { padding-left: 0px; }
 h1 { font-size: 22px; }
 h2 { font-size: 20px; }
 h3 { font-size: 18px; }
@@ -574,10 +574,10 @@ table.emot td {cursor: pointer; border: #eee solid 1px; padding: 2px;}
 .u-search .list a span{display: block;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 /*.u-search .list .odd{background:#f9f7f4;}*/
 /* nav */
-.m-nav{height:44px;margin-bottom:-4px;line-height:44px;background:#c7cfd3;border-radius:3px;}
+.m-nav{height:44px;margin-bottom:-4px;line-height:44px;background:#bdbdbd;border-radius:3px;}
 .m-nav li{float:left;}
 .m-nav a{display:block;padding:0 22px;font:16px/44px 'microsoft yahei',STXihei;_font:700 16px/28px '宋体','黑体';color:#fff;}
-.m-nav .crt a,.m-nav a:hover{background:#898d8d;}
+.m-nav .crt a,.m-nav a:hover{background:#2fbdfd;}
 .category-article-list {height:125px;list-style:none}
 .category-article-list li {height:25px; line-height:25px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis}
 .category-article-list li em {color:#999;font-style: normal}
@@ -589,3 +589,46 @@ table.emot td {cursor: pointer; border: #eee solid 1px; padding: 2px;}
         padding-bottom: 11px;
     }
 }
+
+/* links styles */
+.lnk_red {color:#2fbdfd;}
+.lnk_blue {color:#5a8ea1;}
+.lnk_archive {height:28px; line-height:28px; padding-right:21px; display:block; background:url(images/icon_archive.gif) no-repeat right 10px; font-size:11px; color:#8c8c8c; font-weight:bold;}
+.lnk_all_news {
+    padding-right:23px;
+    display:block;
+    background:url(images/icon_archive.gif) no-repeat right 2px;
+    font-size:14px;
+    color:#2fbdfd;
+    font-weight:bold;
+    line-height:normal;
+    letter-spacing: 1px;
+}
+.lnk_all_news a:hover {
+    text-decoration: underline;
+}
+/* lines */
+.line_1 {height:1px; clear:both; overflow:hidden; background-color:#3d3d3d;}
+.line_2 {height:5px; clear:both; overflow:hidden; background:url(images/line_2.gif) repeat-x;}
+.line_3 {height:1px; clear:both; overflow:hidden; background-color:#e8e8e8;}
+.line_4 {height:3px; clear:both; overflow:hidden; background:url(images/line_4.gif) repeat-x;}
+
+/* pics styles */
+.pic {display:inline-block; line-height:0px;}
+.pic.w_frame {border:3px solid #f2f2f2;}
+.pic.w_frame img {border:1px solid #ffffff;}
+
+.pic.alignleft {margin-right:12px; margin-top:5px; float:left; display:block;}
+.pic.alignright {margin-left:12px; margin-top:5px; float:right; display:block;}
+
+.general_pic_hover {display:inline-block; position:relative;}
+.general_pic_hover .hover {width:100%; height:100%; display:none; overflow:hidden; position:absolute; left:0px; top:0px; background:url(images/bg_hover_1.png); cursor:pointer;}
+.general_pic_hover .icon {width:100%; height:100%; display:block; position:absolute; left:0px; top:0px; background-repeat:no-repeat; background-position:center center; cursor:pointer;}
+
+.general_pic_hover.zoom .hover .icon {background-image:url(images/icon_zoom_1.png);}
+.general_pic_hover.play .hover .icon {background-image:url(images/icon_play_1.png);}
+.general_pic_hover.scale .hover .icon {background-image:url(images/icon_scale_1.png);}
+.general_pic_hover.scale_small .hover .icon {background-image:url(images/icon_scale_2.png);}
+
+.r_corner {background-repeat:no-repeat; background-size:100% 100%; position:relative; behavior:url(layout/plugins/PIE.htc); line-height:0px;}
+.r_corner img {opacity:0; filter:alpha(opacity=0);}

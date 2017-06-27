@@ -1,0 +1,11 @@
+.m-nav a {
+    display: block;
+    padding: 0 32px;
+    font: 16px/44px 'microsoft yahei',STXihei;
+    _font: 700 16px/28px 'microsoft yahei';
+    color: #fff;
+    letter-spacing: 1.8px;
+}
+.m-header .wrap {
+    height: 98px;
+}

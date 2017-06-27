@@ -20,7 +20,11 @@ class PageController extends Controller
         }
         $this->layout = $page->use_layout ? 'main' : false;
 
-        return $this->render('index', [
+        $view = $page->view?:'index';
+
+        $page->setCommentEnabled(false);
+
+        return $this->render($view, [
             'page' => $page,
         ]);
     }
