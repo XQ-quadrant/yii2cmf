@@ -169,6 +169,7 @@ class ArticleController extends Controller
                 $moduleModel->id = $model->id;
                 $moduleModel->save();
                 if($moduleModel->hasErrors()) {
+                    var_dump($moduleModel->errors);die();
                     throw new Exception('操作失败');
                 }
                 $transaction->commit();
