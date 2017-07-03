@@ -12,10 +12,10 @@ use yii\helpers\Url;
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => $model->category, 'url' => ['/article/index', 'cate' => \common\models\Category::find()->where(['id' => $model->category_id])->select('slug')->scalar()]];
-$this->params['breadcrumbs'][] = Html::encode($model->title);
+//$this->params['breadcrumbs'][] = Html::encode($model->title);
 list($this->title, $this->params['SEO_SITE_KEYWORDS'], $this->params['SEO_SITE_DESCRIPTION']) = $model->getMetaData();
 ?>
-<div class="col-lg-9">
+<div class="col-lg-8">
     <div class="view-title">
         <h1><?= Html::encode($model->title) ?></h1>
     </div>
@@ -45,10 +45,26 @@ list($this->title, $this->params['SEO_SITE_KEYWORDS'], $this->params['SEO_SITE_D
         <?php endforeach; ?>
     </ul>
 
-    <div class="exhibition-info well">
-        <p class="exhibition-address"><?= Html::icon('map-pin') ?> <?= $model->data->speaker ?> <?= $model->data->address ?></p>
-        <p class="exhibition-time"><?= Html::icon('clock-o') ?> <?= $model->data->time ?></p>
+
+    <div class="lecture_view">
+
+
+            <div class="row data">
+                <div class="col-md-6" >
+                    <p class="exhibition-address"><?= Html::icon('user')?> 主讲人： <?= $model->data->speaker ?></p>
+                    <p class="exhibition-time"><?= Html::icon('clock-o') ?> 时 间 ：<?= $model->data->time ?></p>
+                </div>
+                <div class="col-md-6">
+                    <p class="exhibition-address"><?= Html::icon('map-pin') ?> 地 点 ： <?= $model->data->address ?></p>
+                </div>
+                <p></p>
+            </div>
+
+            <div class="view-content"><?= \yii\helpers\HtmlPurifier::process($model->data->content) ?></div>
+
+        <div class="clearboth"></div>
     </div>
+
 
     <!--内容-->
     <div class="view-content"><?= \yii\helpers\HtmlPurifier::process($model->description) ?></div>
@@ -74,7 +90,7 @@ list($this->title, $this->params['SEO_SITE_KEYWORDS'], $this->params['SEO_SITE_D
     <!-- 评论   -->
     <?= \frontend\widgets\comment\CommentWidget::widget(['entityId' => $model->id]) ?>
 </div>
-<div class="col-lg-3">
+<div class="col-lg-offset-1 col-lg-3">
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="media media-user">

@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?= $this->title . ' ' . Html::a('文章', ['index'], ['class' => 'btn btn-primary btn-flat btn-xs']) ?>
 <?php $this->endBlock() ?>
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
         <div class="box box-solid">
             <div class="box-body no-padding">
                 <?= Nav::widget([

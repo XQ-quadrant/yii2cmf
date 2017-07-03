@@ -10,6 +10,7 @@ use common\models\Category;
 use common\models\Comment;
 use frontend\models\Article;
 use frontend\models\Tag;
+use yii\base\ErrorException;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -47,11 +48,20 @@ class ArticleController extends Controller
         ]);
         // 热门标签
         $hotTags = Tag::hot();
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-            'category' => $category,
-            'hotTags' => $hotTags
-        ]);
+        try{
+            return $this->render($cate.'/index', [
+                'dataProvider' => $dataProvider,
+                'category' => $category,
+                'hotTags' => $hotTags
+            ]);
+        }catch (\yii\base\InvalidParamException $e){
+            return $this->render('index', [
+                'dataProvider' => $dataProvider,
+                'category' => $category,
+                'hotTags' => $hotTags
+            ]);
+        }
+
     }
 
     /**

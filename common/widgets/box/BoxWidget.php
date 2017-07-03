@@ -49,7 +49,7 @@ class BoxWidget extends Widget
                 ->limit(5)->all();*/
 
             $this->activeRecord = Article::find()
-                ->where(['category_id' => $this->category->id])
+                ->where(['category_id' => $this->category->id])->notTrashed()
                 //->andWhere($this->where)
                 ->orderBy(array_merge($this->sort,['level' => SORT_DESC,'created_at'=>SORT_DESC]))
                 ->limit($this->liNum)
@@ -70,6 +70,7 @@ class BoxWidget extends Widget
         }*/
         //$room =
         $renderArray = [
+            'category'=>$this->category,
             'model'=>$this->model,
             'ac'=>$this->activeRecord,
             'css'=>$this->css,

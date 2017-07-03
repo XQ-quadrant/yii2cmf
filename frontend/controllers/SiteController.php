@@ -65,7 +65,9 @@ class SiteController extends Controller
             ]
         ]);
         $categories = Category::find()->all();
+
         $hotTags = Tag::hot();
+
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'categories' => $categories,

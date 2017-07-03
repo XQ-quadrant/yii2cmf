@@ -1,0 +1,14 @@
+{
+    "name": "灰雀II",
+    "version": "1.0.0",
+    "description": "test demo",
+    "title": "bullfinch",
+    "url": "cmf.com",
+    "sampleUrl": "cmf.com/admin",
+    "order": [
+        "Error",
+        "Define",
+        "PostTitleAndError",
+        "PostError"
+    ]
+}

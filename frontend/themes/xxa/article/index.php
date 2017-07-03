@@ -17,7 +17,7 @@ if(isset($category)) {
 }
 
 ?>
-<div class="col-lg-9">
+<div class="col-lg-8">
     <?= \yii\widgets\ListView::widget([
         'dataProvider' => $dataProvider,
         'itemView' => '_item',
@@ -41,7 +41,7 @@ if(isset($category)) {
     ]); ?>
     <?php endif;?>
 </div>
-<div class="col-lg-3">
+<div class="col-lg-offset-1 col-lg-3">
     <?= \common\modules\area\widgets\AreaWidget::widget([
         'slug' => 'article-index-sidebar',
         "blockClass"=>"panel panel-default",

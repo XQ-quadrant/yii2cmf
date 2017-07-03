@@ -352,3 +352,17 @@ td{word-break: break-all}
     border-top-right-radius: 0;
 }
 .content-iframe {position:relative;}
+
+/************** self *****************/
+.main-sidebar, .left-side {
+    width: 205px;
+}
+.content-wrapper, .right-side, .main-footer {
+    margin-left: 205px;
+}
+.main-header .logo {
+    width: 205px;
+}
+.main-header>.navbar {
+    margin-left: 205px;
+}

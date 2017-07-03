@@ -19,6 +19,7 @@ use common\modules\attachment\widgets\SingleWidget;
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">通用</a></li>
                 <li><a href="#tab_2" data-toggle="tab" aria-expanded="true">扩展</a></li>
+                <li><a href="#tab_3" data-toggle="tab" aria-expanded="true">SEO</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_1">
@@ -66,6 +67,9 @@ use common\modules\attachment\widgets\SingleWidget;
 
                     <?= $form->field($model, 'source')->textInput() ?>
 
+                </div>
+                <div class="tab-pane" id="tab_3">
+                    <?= $form->boxField($model, 'meta')->widget(MetaForm::className())->header("SEO"); ?>
                 </div>
             </div>
         </div>
