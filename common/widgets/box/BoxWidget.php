@@ -21,6 +21,7 @@ class BoxWidget extends Widget
     public $cate ;
     public $where ;
     public $liNum = 10;
+    public $offset = 0;
     public $pic;
     public $type;
     public $title;
@@ -28,6 +29,7 @@ class BoxWidget extends Widget
     public $sort = []; //顺序
     public $config = []; //初始化model参数
     public $category = []; // common\models\Category 栏目模型
+    public $feature ; // 特色条目启动
 
     /**
      * 初始化
@@ -53,6 +55,7 @@ class BoxWidget extends Widget
                 //->andWhere($this->where)
                 ->orderBy(array_merge($this->sort,['level' => SORT_DESC,'created_at'=>SORT_DESC]))
                 ->limit($this->liNum)
+                ->offset($this->offset)
                 ->all();
 
             //echo 'hehhe';die();
@@ -73,10 +76,12 @@ class BoxWidget extends Widget
             'category'=>$this->category,
             'model'=>$this->model,
             'ac'=>$this->activeRecord,
+            'pic'=>$this->pic,
             'css'=>$this->css,
             'title'=>$this->title?:$this->category->title,
             'url'=>$this->url,
             'cate'=>$this->cate,
+            'feature'=>$this->feature,
         ];
         if (isset($this->type)){  //渲染视图模板
 

@@ -28,7 +28,7 @@ use yii\helpers\Url;
         <?php foreach ($ac as $m): ?>
             <div class="attachment-block " style="min-height: 80px">
                 <div style="overflow: hidden;height: 68px;display: inline">
-                    <img class="attachment-img" src="<?= Url::to('@web' . $m->cover) ?>" alt=<?= $m->title ?>
+                    <img class="attachment-img" src="<?= Url::to( $m->cover) ?>" alt=<?= $m->title ?>
                     style="max-height:68px;max-width:95px;">
                 </div>
                 <div class="attachment-pushed">

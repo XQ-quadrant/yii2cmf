@@ -14,13 +14,15 @@ use yii\helpers\Url;
 
     <?php foreach ($ac as $m): ?>
         <div class="article">
-            <!--<div class="pic">
+            <?php if($pic==true){ ?>
+
+            <div class="pic">
                 <a href="#" class="w_hover">
-                    <img src="images/pic_popular_post_1.jpg" alt="">
+                    <img src="<?= $m->cover?:Url::to('@web/ccmr/images/defualt.jpg')?>" alt="">
                     <span></span>
                 </a>
-            </div>-->
-
+            </div>
+            <?php } ?>
             <div class="text">
                 <p class="title"><a href="<?= Url::to(['/article/view', 'id' => $m->id]) ?>"><?= $m->title ?></a></p>
                 <div class="date"><p><?= Yii::$app->formatter->asDate($m->created_at, 'Y-M-dd') ?></p></div>
