@@ -8,7 +8,9 @@
 use yii\helpers\Url;
 
 ?>
-<? if($feature == true){ ?>
+<?php if($feature == true && isset($ac[0])){
+    //echo count($ac);die();
+    ?>
 <div class="block_home_post_feature">
     <div class="f_pic">
         <div id="home_f_pic_slider" class="home_f_pic_slider flexslider">
@@ -29,7 +31,7 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
-<?php} ?>
+<?php } ?>
 <div class="line_2" style="margin:8px 0px 16px;"></div>
     <?php for ($i = 1; $i < count($ac); $i ++ ) { ?>
         <div class="block_home_post">
