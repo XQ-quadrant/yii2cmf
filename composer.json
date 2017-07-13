@@ -1,6 +1,6 @@
 {
     "name": "yidashi/yii2cmf",
-    "description": "yii2内容管理框架",
+    "description": "灰雀II 基于yii2内容管理框架",
     "keywords": ["yii2", "cmf", "yii2cmf"],
     "homepage": "http://www.51siyuan.cn/",
     "type": "project",

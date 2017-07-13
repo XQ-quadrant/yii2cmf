@@ -9,6 +9,7 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\Controller;
+use backend\models\search\Article as  ArticleSearch;
 
 /**
  * Home controller. 测试首页
@@ -92,5 +93,59 @@ class HomeController extends Controller
         }
 
         return $urls;
+    }
+
+    public function actionTestapi($cate = null)
+    {
+        $searchModel = new ArticleSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+
+
+        $re = [];
+        foreach ($dataProvider->models as $model){
+            $re[] = $model->getOldAttributes();
+        }
+        return json_encode($re);
+
+        /*$query = Article::find()->published();
+        $category = null;
+        if (!empty($cate)) {
+            $category = Category::findByIdOrSlug($cate);
+            if (empty($category)) {
+                throw new NotFoundHttpException('分类不存在');
+            }
+            $query = $query->andFilterWhere(['category_id' => $category->id]);
+        }
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'published_at' => SORT_DESC
+                ],
+                'attributes' => [
+                    'published_at',
+                    'view'
+                ]
+            ]
+        ]);
+
+
+        // 热门标签
+        $hotTags = Tag::hot();
+        try{
+            return $this->render($cate.'/index', [
+                'dataProvider' => $dataProvider,
+                'category' => $category,
+                'hotTags' => $hotTags
+            ]);
+        }catch (\yii\base\InvalidParamException $e){
+            return $this->render('index', [
+                'dataProvider' => $dataProvider,
+                'category' => $category,
+                'hotTags' => $hotTags
+            ]);
+        }*/
+
     }
 }

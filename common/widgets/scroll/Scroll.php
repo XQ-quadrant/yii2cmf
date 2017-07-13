@@ -14,12 +14,25 @@ use yii\helpers\Html;
 
 class Scroll extends Widget
 {
+    public $back_to_top = true;
+    public $qrcode = true;
+    public $app = true;
+
     public function run()
     {
         echo Html::beginTag('div', ['class' => 'fixed-btn']);
-        echo '<a class="back-to-top"><span class="fa fa-arrow-up"></span></a>';
-        echo '<a class="qrcode"><i class="fa fa-qrcode"></i></a>';
-        echo '<a class="app"><i class="fa fa-mobile-phone"></i></a>';
+        if($this->back_to_top!=false){
+            echo '<a class="back-to-top"><span class="fa fa-arrow-up"></span></a>';
+        }
+
+        if($this->qrcode!=false){
+            echo '<a class="qrcode"><i class="fa fa-qrcode"></i></a>';
+        }
+        if($this->app!=false){
+            echo '<a class="app"><i class="fa fa-mobile-phone"></i></a>';
+        }
+
+
         echo Html::endTag('div');
         $this->registerClientScript();
     }

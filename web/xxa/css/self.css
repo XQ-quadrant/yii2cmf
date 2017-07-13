@@ -1,11 +1,198 @@
+a {
+    text-decoration: none;
+    color: #5a8ea1;
+}
 .m-nav a {
     display: block;
-    padding: 0 32px;
-    font: 16px/44px 'microsoft yahei',STXihei;
+    padding: 4px 32px;
+    font: 17px/44px 'microsoft yahei',STXihei;
     _font: 700 16px/28px 'microsoft yahei';
     color: #fff;
     letter-spacing: 1.8px;
+    font-weight: bold;
+}
+.m-nav {
+    height: 51px;
 }
 .m-header .wrap {
-    height: 98px;
+    height: 100px;
 }
+.m-logo a {
+
+     text-indent: 0px;
+    font-size: 37px;
+}
+.home-carousel .glyphicon-chevron-left,.home-carousel .glyphicon-chevron-right{
+    color: rgba(47, 189, 253, 0.8);
+}
+.home-carousel{
+    border: 4px solid #f2f2f2;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    padding: 4px;
+    position: relative;
+    background-color: #ffffff;
+}
+.home-carousel .carousel-control.left {
+    background: none;
+}
+.home-carousel .carousel-control.right {
+    background: none;
+}
+.carousel-indicators .active {
+    background-color: #2fbdfd;
+}
+.action {
+    margin-bottom: 20px;
+}
+body {
+    background: #fffefc;
+}
+.navbar-nav > li > a {
+    line-height: 16px;
+}
+.m-sitenav {
+    height: 39px;
+    padding: 0 35px;
+    background: rgba(248, 248, 250, 0.42);
+}
+.m-banner{
+    position: absolute;
+    height: 202px;
+    top: -18px;
+    z-index: -20;
+    opacity:0.11;
+    filter:alpha(opacity=15);
+
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+.m-banner-left{
+    opacity:0.09;
+    filter:alpha(opacity=15);
+}
+.m-logo, .m-logo a {
+    display: inline;
+    float: left;
+    width: 300px;
+    height: 52px;
+    margin-top: 7px;
+}
+.separator {
+    height: 0px;
+    clear: both;
+    overflow: hidden;
+}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    z-index: 2;
+    cursor: default;
+    color: #fff;
+    border-color: #acd5e8;
+    background-color: #2fbdfd;
+}
+.btn-info {
+    color: #fff;
+    border-color: #6899b0;
+    background-color: #2fbdfd;
+}
+.article-list .media-action {
+    margin-top: 14px;
+}
+/****************** lecture ***************/
+.lecture_view .data{
+    font-size: 15px;
+    color: #061217;
+    margin-bottom: 10px;
+}
+.lecture_view {
+    margin-top: 13px;
+
+}
+
+/*************** block_author ***************/
+.block_author {}
+.block_author .photo {
+    margin-right:19px;
+    padding-top:5px;
+    float:left;
+    max-height: 150px;
+    overflow: hidden;
+}
+.block_author .photo img{
+    width: 150px;
+}
+.block_author .bio {overflow:hidden;}
+.block_author .bio p {padding-bottom:10px; color:#666666; line-height:18px;}
+.block_author .bio .www {padding-left:20px; padding-bottom:4px; background:url(images/icon_www.png) no-repeat 0px 3px; font-size:11px; color:#5a8ea1;}
+.block_author .bio .www a {font-size:11px; color:#5a8ea1; text-decoration:underline;}
+.block_author .bio .www a:hover {color:#f24024; text-decoration:none;}
+.block_author .bio .email {padding-left:20px; padding-bottom:4px; background:url(images/icon_email_1.png) no-repeat 0px 5px; font-size:11px; color:#5a8ea1;}
+.block_author .bio .email a {font-size:11px; color:#5a8ea1; text-decoration:underline;}
+.block_author .bio .email a:hover {color:#f24024; text-decoration:none;}
+.block_author .social {overflow:hidden;}
+.block_author .social li {margin-left:3px; float:left; display:block;}
+.block_author .social li:first-child {margin-left:0px;}
+.block_author .social a {width:18px; height:18px; display:block; overflow:hidden; background-repeat:no-repeat; background-image:url(images/sprite_social_2.png); text-indent:-9000px;}
+.block_author .social a.fb {background-position:0px 0px;}
+.block_author .social a.fb:hover {background-position:0px -18px;}
+.block_author .social a.tw {background-position:-21px 0px;}
+.block_author .social a.tw:hover {background-position:-21px -18px;}
+.block_author .social a.s_fr {background-position:-42px 0px;}
+.block_author .social a.s_fr:hover {background-position:-42px -18px;}
+.block_author .social a.vimeo {background-position:-63px 0px;}
+.block_author .social a.vimeo:hover {background-position:-63px -18px;}
+.block_author .social a.rss {background-position:-84px 0px;}
+.block_author .social a.rss:hover {background-position:-84px -18px;}
+
+/*************************** block_subscribes_sidebar ******************/
+.block_subscribes_sidebar {
+    height:54px;
+    position:relative;
+
+    border:1px solid #f0f0f0;
+
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+
+}
+.block_subscribes_sidebar .service {
+    margin-left:15px;
+    padding-top:14px;
+    float:left;
+}
+.block_subscribes_sidebar .service a {padding-left:30px; display:block; background-repeat:no-repeat; background-position:0px 2px;}
+.block_subscribes_sidebar .service a:hover {text-decoration:none;}
+.block_subscribes_sidebar .service span {display:block; cursor:pointer;}
+.block_subscribes_sidebar .service .num {padding-bottom:3px; font-size:13px; color:#343434; font-weight:bold; line-height:13px;}
+.block_subscribes_sidebar .service .people {font-size:10px; color:#939393; line-height:10px;}
+
+.block_subscribes_sidebar .service a.rss {background-image:url(images/icon_rss_1.png);}
+.block_subscribes_sidebar .service a.tw {background-image:url(images/icon_tw_1.png);}
+.block_subscribes_sidebar .service a.fb {background-image:url(images/icon_fb_1.png);}
+
+/*************** achievement ****************/
+.achievement-list .table > thead > tr > th,
+.achievement-list .table > tbody > tr > th,
+.achievement-list .table > tfoot > tr > th,
+.achievement-list .table > thead > tr > td,
+.achievement-list .table > tbody > tr > td,
+.achievement-list .table > tfoot > tr > td {
+    line-height: 1.42857143;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ddd;
+    border-top: none;
+}
+.achievement-list .nav > li > a {
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 2px;
+    padding: 10px 27px;
+}
+

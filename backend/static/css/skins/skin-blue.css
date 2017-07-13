@@ -3,7 +3,7 @@
  * ----------
  */
 .skin-blue .main-header .navbar {
-  background-color: #3f526c;
+  background-color: #353943;
 }
 .skin-blue .main-header .navbar .nav > li > a {
   color: #ffffff;
@@ -43,15 +43,15 @@
   }
 }
 .skin-blue .main-header .logo {
-  background-color: #384d94;
+  background-color: #353943;
   color: #ffffff;
   border-bottom: 0 solid transparent;
 }
 .skin-blue .main-header .logo:hover {
-  background-color: #526bbe;
+  background-color: rgba(82, 107, 190, 0.29);
 }
 .skin-blue .main-header li.user-header {
-  background-color: #526bbe;
+  background-color: rgba(82, 107, 190, 0.29);
 }
 .skin-blue .content-header {
   background: transparent;
@@ -59,7 +59,7 @@
 .skin-blue .wrapper,
 .skin-blue .main-sidebar,
 .skin-blue .left-side {
-  background-color: #3f526c;
+  background-color: #363f4e;
 }
 .skin-blue .user-panel > .info,
 .skin-blue .user-panel > .info > a {
@@ -75,15 +75,15 @@
 .skin-blue .sidebar-menu > li:hover > a,
 .skin-blue .sidebar-menu > li.active > a {
   color: #ffffff;
-  background: #1e282c;
-  border-left-color: #526bbe;
+  background: rgba(68, 68, 90, 0.21);
+  border-left-color: #003bff;
 }
 .skin-blue .sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
   background: #2c3b41;
 }
 .skin-blue .sidebar a {
-  color: #b8c7ce;
+  color: #fbfdfe;
 }
 .skin-blue .sidebar a:hover {
   text-decoration: none;

@@ -600,18 +600,26 @@ table.emot td {cursor: pointer; border: #eee solid 1px; padding: 2px;}
     background:url(images/icon_archive.gif) no-repeat right 2px;
     font-size:14px;
     color:#2fbdfd;
-    font-weight:bold;
-    line-height:normal;
-    letter-spacing: 1px;
+    font-weight: normal;
+    line-height: normal;
+    letter-spacing: 2px;
+    float: right;
 }
 .lnk_all_news a:hover {
     text-decoration: underline;
 }
 /* lines */
 .line_1 {height:1px; clear:both; overflow:hidden; background-color:#3d3d3d;}
-.line_2 {height:5px; clear:both; overflow:hidden; background:url(images/line_2.gif) repeat-x;}
+.line_2 {
+    height:5px;
+    clear:both;
+    overflow:hidden;
+    background: rgb(252, 252, 252);
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #dbdbdb;
+}}
 .line_3 {height:1px; clear:both; overflow:hidden; background-color:#e8e8e8;}
-.line_4 {height:3px; clear:both; overflow:hidden; background:url(images/line_4.gif) repeat-x;}
+.line_4 {height:3px; clear:both; overflow:hidden;     background: rgba(231, 231, 231, 0.63);}
 
 /* pics styles */
 .pic {display:inline-block; line-height:0px;}

@@ -139,7 +139,7 @@ class DynamicInputWidget extends InputWidget
                     'value' => $this->value,
                     'type' => 1,
                     'convertFormat' => true,
-                    'pluginOptions' => ['format' => 'php:Y-m-d H:i:s', 'autoclose' => true]
+                    'pluginOptions' => ['format' => 'php:Y-m-d H:i:ss', 'autoclose' => true]
                 ], $this->options));
                 break;
             case 'city': //城市联动
@@ -219,7 +219,7 @@ class DynamicInputWidget extends InputWidget
                     'attribute' => $this->attribute,
                     'type' => 1,
                     'convertFormat' => true,
-                    'pluginOptions' => ['format' => 'php:Y-m-d H:i:s', 'autoclose' => true],
+                    'pluginOptions' => ['format' => 'php:Y-m-d h:i', 'autoclose' => true],
                 ], $this->options));
                 break;
             case 'city': //城市联动

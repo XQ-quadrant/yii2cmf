@@ -68,6 +68,9 @@ return [
         'v2' => [
             'class' => '\api\modules\v2\Module'
         ],
+        'modules' => [
+            'class' => 'api\modules\test\Modules',
+        ],
     ],
     'params' => $params
 ];

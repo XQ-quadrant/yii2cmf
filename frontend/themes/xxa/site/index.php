@@ -2,140 +2,110 @@
 
 use yii\helpers\Url;
 use common\models\Category;
-/* @var $this yii\web\View
-* @var $categories array
 
+/* @var $this yii\web\View
+ * @var $categories array
  */
 
 ?>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8" style="padding-right: 31px;">
+        <div class="row">
         <?= \frontend\widgets\slider\CarouselWidget::widget([
             'key' => 'cc',
             'options' => [
-                'class' => 'mb15',
+                'class' => 'mb15 home-carousel',
             ],
         ]) ?>
-
+        </div>
         <div class="row">
-            <div class="line_2" style="margin:34px 0px 28px;"></div>
-            <?= common\widgets\box\BoxWidget::widget([
-                'category'=>Category::findOne(['slug'=>'news']),
+            <?php
+            if ($this->beginCache('category-article-list', ['duration' => 1])):
+                ?>
+                <div class="line_2" style="margin:34px 0px 28px;"></div>
+                <div class="row">
+                    <?= common\widgets\box\BoxWidget::widget([
+                        'category' => Category::findOne(['slug' => 'lecture']),
+                        //'config' => ['cate'=>14],
+                        //'where' => ['category_id' => $category2->id],
+                        'type' => 'block_lecture_post',
+                        //'cate' => 14,
+                        'sort' => [
+                            'created_at' => SORT_DESC,
+                            //'name' => SORT_DESC,
+                        ],
+                        'liNum' => 4,
+                        //'pic' => true,
+                        //'title' => ,
+                        'url' => Url::toRoute(['document/list', 'cate' => 14]),
+                        'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
+                    ]) ?>
+                </div>
+                <div class="clearfix"></div>
+
+
+                <?= common\widgets\box\BoxWidget::widget([
+                'category' => Category::findOne(['slug' => 'news']),
                 //'config' => ['cate'=>14],
                 //'where' => ['category_id' => $category2->id],
-                'type' => 'block_home_post',
+                'type' => 'block_topic_post',
                 //'cate' => 14,
                 'sort' => [
                     'created_at' => SORT_DESC,
                     //'name' => SORT_DESC,
                 ],
-                'liNum' => 6,
+                'liNum' => 4,
                 //'pic' => true,
                 //'title' => ,
                 'url' => Url::toRoute(['document/list', 'cate' => 14]),
                 'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
             ]) ?>
 
-            <?php
-            if ($this->beginCache('category-article-list', ['duration' => 1])):
-                ?>
-                <?php foreach ($categories as $category): ?>
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><?= $category->title ?></h3>
-                            <div class="pull-right"><a
-                                    href="<?= Url::to(['/article/index', 'cate' => $category->slug]) ?>"
-                                    target="_blank">更多 >></a></div>
-                        </div>
-                        <div class="panel-body">
-                            <ul class="category-article-list">
-                                <?php
-                                $list = \frontend\models\Article::find()->andWhere(['category_id' => $category->id])->orderBy('id desc')->limit(5)->all();
-                                foreach ($list as $item) :
-                                    ?>
-                                    <li><em><?= Yii::$app->formatter->asDate($item->published_at, 'php:m-d') ?></em> <a
-                                            href="<?= Url::to(['/article/view', 'id' => $item->id]) ?>"
-                                            title="<?= $item->title ?>" target="_blank"><?= $item->title ?></a></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+
                 <?php $this->endCache();endif; ?>
 
-            <?php $category2 = Category::findOne(['slug'=>'notice']); ?>
-            <div class="col-md-6">
 
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><?= $category2->title ?></h3>
-                        <div class="pull-right"><a
-                                href="<?= Url::to(['/article/index', 'cate' => $category2->slug]) ?>"
-                                target="_blank">更多 >></a></div>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="category-article-list">
-                            <?php
-                            $list = \frontend\models\Article::find()
-                                ->andWhere(['category_id' => $category2->id])->orderBy('id desc')
-                                ->limit(5)->all();
-                            foreach ($list as $item) :
-                                ?>
-                                <li><em><?= Yii::$app->formatter->asDate($item->published_at, 'php:m-d') ?></em> <a
-                                        href="<?= Url::to(['/article/view', 'id' => $item->id]) ?>"
-                                        title="<?= $item->title ?>" target="_blank"><?= $item->title ?></a></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="btn-group btn-group-justified">
-            <?php if (Yii::$app->user->isGuest || (!Yii::$app->user->isGuest && !Yii::$app->user->identity->isSign)): ?>
-                <a class="btn btn-success btn-registration" href="<?= Url::to(['/sign/index']) ?>"><i
-                        class="fa fa-calendar-plus-o"></i> 点此处签到<br>签到有好礼</a>
-            <?php else: ?>
-                <a class="btn btn-success disabled" href="<?= Url::to(['/sign/index']) ?>"><i
-                        class="fa fa-calendar-check-o"></i>
-                    今日已签到<br>已连续<?= Yii::$app->user->identity->sign->continue_times ?>天</a>
-            <?php endif; ?>
-            <a class="btn btn-primary" href="<?= Url::to(['/sign/index']) ?>"><?= date('Y年m月d日') ?>
-                <br>今日已有<?= Yii::$app->db->createCommand('SELECT COUNT(*) FROM {{%sign}} WHERE FROM_UNIXTIME(last_sign_at, "%Y%m%d") = "' . date('Ymd') . '"')->queryScalar() ?>
-                人签到</a>
+    <div class="col-md-4" style="        padding-left: 20px;
+    border-left: 1px solid #ededed;">
+
+        <div class="block_subscribes_sidebar">
+            <div class="service">
+                <a href="#" class="rss">
+                    <span class="num">11 234</span>
+                    <span class="people">IEEE</span>
+                </a>
+            </div>
+
+            <div class="service">
+                <a href="#" class="tw">
+                    <span class="num">781</span>
+                    <span class="people">SCI</span>
+                </a>
+            </div>
+
+            <div class="service">
+                <a href="#" class="fb">
+                    <span class="num">341</span>
+                    <span class="people">SSCI</span>
+                </a>
+            </div>
         </div>
+        <div class="separator" style="height:31px;"></div>
         <?= \common\modules\area\widgets\AreaWidget::widget([
             'slug' => 'site-index-sidebar',
             "blockClass" => "panel panel-default",
             "headerClass" => "panel-heading",
             "bodyClass" => "panel-body",
         ]) ?>
-        <?= common\widgets\box\BoxWidget::widget([
-            'category'=>Category::findOne(['slug'=>'notice']),
-            //'config' => ['cate'=>14],
-            'where' => ['category_id' => $category2->id],
-            'type' => 'block_tabs_type_4',
-            //'cate' => 14,
-            'sort' => [
-                'created_at' => SORT_DESC,
-                //'name' => SORT_DESC,
-            ],
-            'liNum' => 4,
-            //'pic' => true,
-            //'title' => ,
-            'url' => Url::toRoute(['document/list', 'cate' => 14]),
-            'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
-        ]) ?>
+
 
         <?= common\widgets\box\BoxWidget::widget([
-            'category'=>Category::findOne(['slug'=>'news']),
+            'category' => Category::findOne(['slug' => 'notice']),
             //'config' => ['cate'=>14],
             //'where' => ['category_id' => $category2->id],
-            'type' => 'block_lectures',
+            'type' => 'block_tabs_type_4',
             //'cate' => 14,
             'sort' => [
                 'created_at' => SORT_DESC,
@@ -144,44 +114,27 @@ use common\models\Category;
             'liNum' => 6,
             //'pic' => true,
             //'title' => ,
+            'url' => Url::toRoute(['article/index', 'cate' => 'notice']),
+            'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
+        ]) ?>
+        <div class="line_2" style="margin:34px 0px 28px;"></div>
+        <?= common\widgets\box\BoxWidget::widget([
+            'category' => Category::findOne(['slug' => 'news']),
+            //'config' => ['cate'=>14],
+            //'where' => ['category_id' => $category2->id],
+            'type' => 'block_popular_posts',
+            //'cate' => 14,
+            'sort' => [
+                'created_at' => SORT_DESC,
+                //'name' => SORT_DESC,
+            ],
+            'liNum' => 6,
+            //'pic' => true,
+            'title' =>'行业信息' ,
             'url' => Url::toRoute(['document/list', 'cate' => 14]),
             'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
         ]) ?>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?= $category2->title ?></h3>
-                <div class="pull-right"><a
-                        href="<?= Url::to(['/article/index', 'cate' => $category2->slug]) ?>"
-                        target="_blank">更多 >></a></div>
-            </div>
-            <div class="panel-body">
-                <ul class="category-article-list">
-                    <?php
-                    $list = \frontend\models\Article::find()->andWhere(['category_id' => $category2->id])->orderBy('id desc')->limit(5)->all();
-                    foreach ($list as $item) :
-                        ?>
-                        <li><em><?= Yii::$app->formatter->asDate($item->published_at, 'php:m-d') ?></em> <a
-                                href="<?= Url::to(['/article/view', 'id' => $item->id]) ?>"
-                                title="<?= $item->title ?>" target="_blank"><?= $item->title ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </div>
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <h5>热门教程</h5>
-            </div>
-            <div class="panel-body">
-                <ul class="post-list">
-                    <?php $books = \common\modules\book\models\Book::find()->orderBy('view desc')->limit(5)->all();
-                    foreach ($books as $book): ?>
-                        <li><a href="<?= Url::to(['/book/default/view', 'id' => $book->id]) ?>"
-                               title="<?= $book->book_name ?>" target="_blank"><?= $book->book_name ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </div>
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h5>热门标签</h5>
@@ -195,39 +148,6 @@ use common\models\Category;
                 </ul>
             </div>
         </div>
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <h5>推荐内容</h5>
-            </div>
-            <div class="panel-body">
-                <ul class="post-list">
-                    <?php
-                    $recommentList = \frontend\models\Article::tops();
-                    foreach ($recommentList as $item):
-                        ?>
-                        <li><a href="<?= Url::to(['/article/view', 'id' => $item->id]) ?>" title="<?= $item->title ?>"
-                               target="_blank"><?= $item->title ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </div>
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <h5>活跃用户</h5>
-            </div>
-            <div class="panel-body">
-                <ul class="login-user-list">
-                    <?php $users = \common\modules\user\models\User::find()->orderBy('login_at desc')->limit(6)->all();
-                    foreach ($users as $user): ?>
-                        <li class="col-md-4 col-xs-4 mb15">
-                            <a href="<?= Url::to(['/user/default/index', 'id' => $user->id]) ?>">
-                                <img src="<?= $user->getAvatar(64) ?>" alt="<?= $user->username ?>">
-                                <p><?= $user->username ?></p>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </div>
+
     </div>
 </div>

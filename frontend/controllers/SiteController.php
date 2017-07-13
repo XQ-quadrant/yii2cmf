@@ -65,8 +65,32 @@ class SiteController extends Controller
             ]
         ]);
         $categories = Category::find()->all();
+
         $hotTags = Tag::hot();
+
         return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'categories' => $categories,
+            'hotTags' => $hotTags
+        ]);
+    }
+
+    public function actionYdyl()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Article::find()->published(),
+            'sort' => [
+                'defaultOrder' => [
+                    'is_top' => SORT_DESC,
+                    'published_at' => SORT_DESC
+                ]
+            ]
+        ]);
+        $categories = Category::find()->all();
+
+        $hotTags = Tag::hot();
+
+        return $this->render('ydyl', [
             'dataProvider' => $dataProvider,
             'categories' => $categories,
             'hotTags' => $hotTags
