@@ -14,19 +14,30 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' =>true,
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => [
                         'v1/article',
+                        'v1/calendar-event',
                         'v1/nav',
                         'v1/user',
-                    ]
+                    ],
+                    'pluralize'=>false,//禁用复数形式，建议使用
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => ['v2/calendar-event'],
+                    'pluralize'=>false,//禁用复数形式，建议使用
                 ],
             ],
         ],
         'request' => [
-            'enableCookieValidation' => false
+            //'enableCookieValidation' => false, *
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'response' => [
             'format' => 'json',

@@ -35,9 +35,16 @@ $bundle = AttachmentIndexAsset::register($this);
                 echo Html::a(Html::img($model->url), $model->url);
                 break;
             default:
-                echo Html::a(Html::img($bundle->baseUrl."/images/".$media->getFileType().".png"), $model->url);
-        }
-        ?>
+				//echo Html::a(Html::img($bundle->baseUrl."/images/".$media->getFileType().".png"), $model->url);
+
+            	?>
+				<a href="<?= $model->url ?>">
+					<?= Html::img("/admin/images/icon/Document-checklist.svg",['style'=>'border:none']) ?>
+					<span><?= $model->title ?></span>
+				</a>
+						<?php
+						}
+						?>
                     <span class="checked glyphicon glyphicon-check"></span>
 					</div>
 					<?php endforeach;?>

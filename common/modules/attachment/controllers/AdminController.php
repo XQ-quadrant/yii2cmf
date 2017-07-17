@@ -32,6 +32,17 @@ class AdminController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    public function actionSelf()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Attachment::find()->andWhere(['user_id'=>Yii::$app->user->id]),
+        ]);
+
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     public function actionView($id)
     {
         $model = $this->findModel($id);

@@ -31,6 +31,7 @@ class ArticleController extends Controller
         ]);
         return $dataProvider;
     }
+
     public function actionView($id = 0)
     {
         $model = Article::find()->published()->where(['id' => $id])->with('data')->one();
